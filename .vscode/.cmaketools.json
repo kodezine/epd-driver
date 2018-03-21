@@ -1,0 +1,67 @@
+{
+  "variant": {
+    "label": "Release",
+    "keywordSettings": {
+      "buildType": "release"
+    },
+    "description": "Enable optimizations, omit debug info"
+  },
+  "activeEnvironments": [],
+  "codeModel": {
+    "configurations": [
+      {
+        "name": "Release",
+        "projects": [
+          {
+            "buildDirectory": "/home/p/git/kdepd.git/build",
+            "name": "kdEPD",
+            "sourceDirectory": "/home/p/git/kdepd.git",
+            "targets": [
+              {
+                "artifacts": [
+                  "/home/p/git/kdepd.git/build/kdEPD"
+                ],
+                "buildDirectory": "/home/p/git/kdepd.git/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "-O3 -DNDEBUG  ",
+                    "defines": [
+                      "EPD_COG_VERSION=2"
+                    ],
+                    "includePath": [
+                      {
+                        "path": "/home/p/git/kdepd.git/inc"
+                      },
+                      {
+                        "path": "/home/p/git/kdepd.git/images"
+                      }
+                    ],
+                    "isGenerated": false,
+                    "language": "C",
+                    "sources": [
+                      "src/epd_test.c",
+                      "src/epd_v2.c",
+                      "src/gpio.c",
+                      "src/spi.c"
+                    ]
+                  }
+                ],
+                "fullName": "kdEPD",
+                "linkFlags": "-rdynamic",
+                "linkLanguageFlags": "-O3 -DNDEBUG",
+                "linkLibraries": "-lpthread -lrt",
+                "linkerLanguage": "C",
+                "name": "kdEPD",
+                "sourceDirectory": "/home/p/git/kdepd.git",
+                "type": "EXECUTABLE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cookie": "0.8733069488178229",
+    "inReplyTo": "codemodel",
+    "type": "reply"
+  }
+}
