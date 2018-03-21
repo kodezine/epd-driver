@@ -24,7 +24,7 @@
                 "buildDirectory": "/home/p/git/kdepd.git/build",
                 "fileGroups": [
                   {
-                    "compileFlags": "-O3 -DNDEBUG  ",
+                    "compileFlags": "-O2 -pipe -g -feliminate-unused-debug-types -O3 -DNDEBUG  ",
                     "defines": [
                       "EPD_COG_VERSION=2"
                     ],
@@ -47,8 +47,8 @@
                   }
                 ],
                 "fullName": "kdEPD",
-                "linkFlags": "-rdynamic",
-                "linkLanguageFlags": "-O3 -DNDEBUG",
+                "linkFlags": "-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed   -rdynamic",
+                "linkLanguageFlags": "-O2 -pipe -g -feliminate-unused-debug-types -O3 -DNDEBUG",
                 "linkLibraries": "-lpthread -lrt",
                 "linkerLanguage": "C",
                 "name": "kdEPD",
@@ -60,7 +60,7 @@
         ]
       }
     ],
-    "cookie": "0.8733069488178229",
+    "cookie": "0.7186953441704029",
     "inReplyTo": "codemodel",
     "type": "reply"
   }

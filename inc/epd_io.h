@@ -16,34 +16,19 @@
 #if !defined(EPD_IO_H)
 #define EPD_IO_H 1
 
-/** GPIO Output Pins *********************************************************/
-#define panel_on_pin                101
-#define border_pin                  45
-#define discharge_pin               97
-#define reset_pin                   85
+/** GPIO Output Pins                        VIOLA X9    SODIMM      CPU PIN */
+#define panel_on_pin                79  /*  36          38          PTD0    */
+#define border_pin                  80  /*  37          36          PTD1    */
+#define discharge_pin               81  /*  38          34          PTD2    */
+#define reset_pin                   82  /*  39          32          PTD3    */
 
 /** GPIO Input Pins **********************************************************/
-#define busy_pin                    79
+#define busy_pin                    26  /*  34          21          PTB4    */
 
 /** PWM Pin ******************************************************************/
 #define pwmb_pin                    42
 #define pwm_b                       0
-/** VIOLA 1.1 to Colibri VF SODIMM values ************************************/
-#define VIOLA_12	                gpio101
-#define VIOLA_13	                gpio97
-#define VIOLA_14	                gpio85
-#define VIOLA_15	                gpio79
-#define VIOLA_16	                gpio45
 
-
-/** */
-#ifdef __ARM_EABI__    // path when executing on ARM target
-    #define PATH_GPIO_VALUE(x)		"/sys/class/gpio/##x/value"
-    #define PATH_GPIO_DIRECTION(x)	"/sys/class/gpio/##x/direction"
-#else                  // path when executing on x86 host
-    #define PATH_GPIO_VALUE(x)		"/tmp/class/gpio/##x/value"
-    #define PATH_GPIO_DIRECTION(x)	"/tmp/class/gpio/##x/direction"
-#endif
 
 #define SPI_DEVICE                  "/dev/spidev1.0"
 #define SPI_BPS                     8000000
