@@ -185,7 +185,7 @@ void GPIO_pwm_write(int pin, uint32_t value) {
 
 static int pwm_setperiod(int pwm, unsigned int frequency)
 {
-	int ret = 0, nread;
+	int ret = 0;
 	char buf[50];
 	char val[16];
 	sprintf(buf, "/sys/class/pwm/pwmchip8/pwm%d/period", pwm);
@@ -251,7 +251,8 @@ static int pwm_setduty(int pwm, int16_t value) {
 	unsigned int period = 0U;
 
 	memset(val, 0, sizeof(val));
-	char x, i=0;
+	char x;
+	int i=0;
     do
 	{
 		nread = read(pwmfd_period, &x, 1);
@@ -266,7 +267,7 @@ static int pwm_setduty(int pwm, int16_t value) {
 
 	memset(val, 0, sizeof(val));
 	
-	int len = sprintf(val, "%d\0", duty_cycle);
+	int len = sprintf(val, "%d", duty_cycle);
 
 	if(len != write(pwmfd_dutycycle, val, len))
 	{
@@ -361,7 +362,7 @@ static int gpio_export(int gpio)
 {
 	int efd;
 	char buf[50];
-	int gpiofd, ret;
+	int ret;
 
 	/* Quick test if it has already been exported */
 	sprintf(buf, "/sys/class/gpio/gpio%d/value", gpio);
@@ -391,17 +392,17 @@ static int gpio_export(int gpio)
 
 void gpio_unexport(int gpio)
 {
-	int gpiofd, ret;
+	int gpiofd,ret;
 	char buf[50];
 	gpiofd = open("/sys/class/gpio/unexport", O_WRONLY | O_SYNC);
 	sprintf(buf, "%d", gpio);
 	ret = write(gpiofd, buf, strlen(buf));
 	close(gpiofd);
+	(void)ret;
 }
 
 int gpio_getfd(int gpio)
 {
-	char in[3] = {0, 0, 0};
 	char buf[50];
 	int gpiofd;
 	sprintf(buf, "/sys/class/gpio/gpio%d/value", gpio);
@@ -441,7 +442,7 @@ int gpio_read(int gpio)
 int gpio_write(int gpio, int val)
 {	
 	char buf[50];
-	int nread, ret, gpiofd;
+	int ret, gpiofd;
 	sprintf(buf, "/sys/class/gpio/gpio%d/value", gpio);
 	gpiofd = open(buf, O_RDWR);
 	if(gpiofd > 0) {
@@ -486,12 +487,13 @@ int gpio_select(int gpio)
 			return 1;
 		}
 	}
+	(void)ret;
 }
 static int pwm_export(int pwm)
 {
 	int efd;
 	char buf[50];
-	int gpiofd, ret;
+	int ret;
 
 	/* Quick test if it has already been exported */
 	sprintf(buf, "/sys/class/pwm/pwmchip8/pwm%d", pwm);
@@ -522,7 +524,7 @@ static int pwm_unexport(int pwm)
 {
 	int efd;
 	char buf[50];
-	int gpiofd, ret;
+	int ret;
 
 	/* Quick test if it has already been exported */
 	sprintf(buf, "/sys/class/pwm/pwmchip8/pwm%d", pwm);

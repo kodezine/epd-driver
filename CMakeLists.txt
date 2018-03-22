@@ -2,11 +2,11 @@
 cmake_minimum_required(VERSION 2.8)
 
 # Name of the project
-project(kdEPD)
+project(kdEPD C CXX)
 
 # Compiler flags for build
-set(CMAKE_CXX_FLAGS "-Wall -std=c++11 ${CMAKE_CXX_FLAGS}")
-
+set(CMAKE_CXX_FLAGS "-Wall -std=c++11 -D_FILE_OFFSET_BITS=64 ${CMAKE_CXX_FLAGS}")
+set(CMAKE_C_FLAGS "-Wall -D_FILE_OFFSET_BITS=64 ${CMAKE_C_FLAGS}")
 # Options for enabling / disabling features of the driver
 option(COGVERSIONV2 "Set to enabled if COG version driver should be used." ON)
 # option(ENABLE_DEBUG_MSG "Set to enable debug prints for low level debugging." OFF)
@@ -34,6 +34,11 @@ file(GLOB SOURCES
 	"src/*.cpp"
 )
 
+list(REMOVE_ITEM SOURCES
+	"${CMAKE_SOURCE_DIR}/src/epd_test.c"
+	"${CMAKE_SOURCE_DIR}/src/epd_fuse.c"
+)
+
 # Additional defines to be introduced
 if (COGVERSIONV2)
     add_definitions ( -DEPD_COG_VERSION=2 )
@@ -44,6 +49,7 @@ add_executable(
 	${PROJECT_NAME} 
 
 	${SOURCES}
+	${CMAKE_SOURCE_DIR}/src/epd_test.c
 )
 
 # Linking libraries
@@ -51,4 +57,16 @@ target_link_libraries(
 	${PROJECT_NAME} 
 
 	${LIBS4COMPILE}
+)
+add_executable(
+	epd_fuse 
+
+	${SOURCES}
+	${CMAKE_SOURCE_DIR}/src/epd_fuse.c
+)
+target_link_libraries(
+	epd_fuse 
+
+	${LIBS4COMPILE}
+	fuse
 )
