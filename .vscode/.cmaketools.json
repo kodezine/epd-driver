@@ -19,50 +19,12 @@
             "targets": [
               {
                 "artifacts": [
-                  "/home/p/git/kdepd.git/build/epd_fuse"
-                ],
-                "buildDirectory": "/home/p/git/kdepd.git/build",
-                "fileGroups": [
-                  {
-                    "compileFlags": "-Wall -D_FILE_OFFSET_BITS=64 -O2 -pipe -g -feliminate-unused-debug-types -O3 -DNDEBUG  ",
-                    "defines": [
-                      "EPD_COG_VERSION=2"
-                    ],
-                    "includePath": [
-                      {
-                        "path": "/home/p/git/kdepd.git/inc"
-                      },
-                      {
-                        "path": "/home/p/git/kdepd.git/images"
-                      }
-                    ],
-                    "isGenerated": false,
-                    "language": "C",
-                    "sources": [
-                      "src/epd_v2.c",
-                      "src/gpio.c",
-                      "src/spi.c",
-                      "src/epd_fuse.c"
-                    ]
-                  }
-                ],
-                "fullName": "epd_fuse",
-                "linkFlags": "-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed   -rdynamic",
-                "linkLanguageFlags": "-Wall -D_FILE_OFFSET_BITS=64 -O2 -pipe -g -feliminate-unused-debug-types -O3 -DNDEBUG",
-                "linkLibraries": "-lpthread -lrt -lfuse",
-                "linkerLanguage": "C",
-                "name": "epd_fuse",
-                "sourceDirectory": "/home/p/git/kdepd.git",
-                "type": "EXECUTABLE"
-              },
-              {
-                "artifacts": [
                   "/home/p/git/kdepd.git/build/kdEPD"
                 ],
                 "buildDirectory": "/home/p/git/kdepd.git/build",
                 "fileGroups": [
                   {
-                    "compileFlags": "-Wall -D_FILE_OFFSET_BITS=64 -O2 -pipe -g -feliminate-unused-debug-types -O3 -DNDEBUG  ",
+                    "compileFlags": "-Wall -D_FILE_OFFSET_BITS=64  -O3 -DNDEBUG  ",
                     "defines": [
                       "EPD_COG_VERSION=2"
                     ],
@@ -85,8 +47,8 @@
                   }
                 ],
                 "fullName": "kdEPD",
-                "linkFlags": "-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed   -rdynamic",
-                "linkLanguageFlags": "-Wall -D_FILE_OFFSET_BITS=64 -O2 -pipe -g -feliminate-unused-debug-types -O3 -DNDEBUG",
+                "linkFlags": "-rdynamic",
+                "linkLanguageFlags": "-Wall -D_FILE_OFFSET_BITS=64  -O3 -DNDEBUG",
                 "linkLibraries": "-lpthread -lrt",
                 "linkerLanguage": "C",
                 "name": "kdEPD",
@@ -98,7 +60,7 @@
         ]
       }
     ],
-    "cookie": "0.3608433262475039",
+    "cookie": "0.6212258151985597",
     "inReplyTo": "codemodel",
     "type": "reply"
   }
