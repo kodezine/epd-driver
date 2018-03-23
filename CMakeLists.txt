@@ -37,6 +37,7 @@ file(GLOB SOURCES
 list(REMOVE_ITEM SOURCES
 	"${CMAKE_SOURCE_DIR}/src/epd_test.c"
 	"${CMAKE_SOURCE_DIR}/src/epd_fuse.c"
+	"${CMAKE_SOURCE_DIR}/src/epd_app.c"
 )
 
 # Additional defines to be introduced
@@ -69,4 +70,9 @@ target_link_libraries(
 
 	${LIBS4COMPILE}
 	fuse
+)
+add_executable(
+	epd_app 
+
+	${CMAKE_SOURCE_DIR}/src/epd_app.c
 )
