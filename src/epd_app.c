@@ -1,40 +1,88 @@
-#include <stdio.h>
 #include <stdint.h>
+#include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <unistd.h>
+#include <err.h>
+#include <unistd.h>
+#include <errno.h>
+#include <sys/select.h>
+#include <sys/stat.h>
+
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <ifaddrs.h>
+#include <time.h>
 
 #include "epd_fonts.h"
 #define EPD_PIXELS_PER_ROWS         264
 #define EPD_TOTAL_ROWS              176
 
 #define EPD_BYTES_PER_ROW           (EPD_PIXELS_PER_ROWS / 8)
-
-#define BYTEBUFFER                  (EPD_BYTES_PER_ROW*EPD_TOTAL_ROWS)
-
-
-void epd_putchar(uint32_t x, uint32_t y, uint8_t* pBuffer, uint8_t c);
-void epd_putstring(uint32_t x, uint32_t y, uint8_t* pBuffer, char* pString);
+#define EPD_CHARS_PER_LINE          (EPD_TOTAL_ROWS / 8)
+#define BYTEBUFFER                  (EPD_BYTES_PER_ROW * EPD_TOTAL_ROWS)
+#define MAX_EPD_CHARS               (EPD_CHARS_PER_LINE * EPD_BYTES_PER_ROW)
+int app_network(int *poffset, char* pString);
+static void epd_putchar(uint32_t x, uint32_t y, uint8_t* pBuffer, uint8_t c);
+static void epd_putstring(uint32_t x, uint32_t y, uint8_t* pBuffer, char* pString);
+static void epd_transpose(uint8_t *pDest, uint8_t *pSrc);
 
 int main(void)
 {
+    const char* pName = "\nKODEZINE UG";
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    FILE *pEPD = NULL;
+    FILE *pEPC = NULL;
     uint8_t *pBuffer = malloc(BYTEBUFFER);
+    char *pScreen = malloc(MAX_EPD_CHARS);
+    memset(pBuffer, 0, BYTEBUFFER);
+    memset(pScreen, 0, MAX_EPD_CHARS);
+    
     if(pBuffer != NULL)
     {
-        memset(pBuffer, 0, BYTEBUFFER);
-        epd_putstring(0,8,pBuffer,"Hello Komal \nHello Dev\0");
+        static int x = 0;
+        x += sprintf(pScreen+x, "%s", pName);
+        x += sprintf(pScreen+x, "    %d-%d-%d %d:%d:%d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
         
-        FILE *pEPD = fopen("test.bin", "wb+");
+        epd_putstring(0, 0, pBuffer, pScreen);
+        printf("%s: %d\n",pScreen, x);
+        pEPD = fopen("/dev/epd/display","wb+");
 
         if(pEPD != NULL)
         {
             fwrite(pBuffer, BYTEBUFFER, 1, pEPD);
+            pEPC = fopen("/dev/epd/command","wb+");
+            if(pEPC != NULL)
+            {
+                fwrite("U", 1, 1, pEPC);
+            }
+            fclose(pEPC);
+        }else{
+            printf("\nWriting in a local 'test.bin' buffer\n");
+            FILE *pBIN = fopen("test.bin", "wb+");
+
+            if(pBIN != NULL)
+            {
+                fwrite(pBuffer, BYTEBUFFER, 1, pBIN);
+            }
+            fclose(pBIN);
         }
         fclose(pEPD);
+    }else
+    {
+        perror("Error in allocating BYTEBUFFER\n");
     }
+    free(pBuffer);
+    free(pScreen);
     return 0;
 }
 
-void transpose(uint8_t *pDest, uint8_t *pSrc)
+static void epd_transpose(uint8_t *pDest, uint8_t *pSrc)
 {
     uint8_t i, j;
     for(i = 0; i < 8; i++)
@@ -65,7 +113,7 @@ void epd_putchar(uint32_t x, uint32_t y, uint8_t* pBuffer, uint8_t c)
         src[i] = CP437FONT8x8[index];
         i++;
     }
-    transpose(dest, src);
+    epd_transpose(dest, src);
     for(index = 0; index < 8 ;index++)
     {
         pBuffer[bufferIndex] = dest[index];
@@ -86,7 +134,7 @@ void epd_putstring(uint32_t x, uint32_t y, uint8_t *pBuffer, char* pString)
                 x = 0;
             }else{
                 epd_putchar(x++, y, pBuffer, *pString);
-            }
+            }                
         }
         pString++;
     }while(1);
