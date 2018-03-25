@@ -6,8 +6,7 @@ The E-Paper display driver written in C from [Embedded Artists][1] is modified t
 
 The following changes were required to be made for the E-Paper display interface.
 
-...5 GPIO were required for the interface. The SPI was already in the default dtb configuration. Since the resources needed the modifications, a patch is created for additional reference. 
-...For this implementation UART1 and UART2 is scavanged. While the CAN1 is introduced for need of application not dependent on E-Paper Display.
+   5 GPIO were required for the interface. The SPI was already in the default dtb configuration. Since the resources needed the modifications, a patch is created for additional reference.   For this implementation UART1 and UART2 is scavanged. While the CAN1 is introduced for need of application not dependent on E-Paper Display.
 
 ## Project management
 
