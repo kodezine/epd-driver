@@ -1,4 +1,4 @@
-# epd-driver
+# epd-driver for [2.7"] display
 
 The E-Paper display driver written in C from [Embedded Artists][1] is modified to be used with [Colibri VF50][2] module on [Viola V1.1][5] from Toradex&reg;.
 
@@ -67,3 +67,4 @@ This is a target application that only tests if the IP search is working and buf
 [6]: https://github.com/twxs/gitflow
 [7]: https://github.com/vector-of-bool/vscode-cmake-tools
 [FUSE]: https://en.wikipedia.org/wiki/Filesystem_in_Userspace
+[2.7"]: https://www.embeddedartists.com/products/displays/lcd_27_epaper.php
