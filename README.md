@@ -11,12 +11,12 @@ The following changes were required to be made for the E-Paper display interface
 ## Project management
 
 The project is editied using visual studio code with following plugins:
-    - C/C++ extension from Microsoft.
-    - CMake language support plugin from twxs
-    - CMake language support plugin from vector-of-bool
+ - C/C++ extension from Microsoft.
+ - CMake language support plugin from twxs
+ - CMake language support plugin from vector-of-bool
 
 The compiler tools are
-    - ARM compiler toolchain for Toradex boards as described in [this][3] page.
+ - ARM compiler toolchain for Toradex boards as described in [this][3] page.
 
 ## Targets
 
