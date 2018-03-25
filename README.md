@@ -6,7 +6,8 @@ The E-Paper display driver written in C from [Embedded Artists][1] is modified t
 
 The following changes were required to be made for the E-Paper display interface.
 
-5 GPIO were required for the interface. The SPI was already in the default dtb configuration. Since the resources needed the modifications, a patch is created for additional reference. For this implementation UART1 and UART2 is scavanged. While the CAN1 is introduced for need of application not dependent on E-Paper Display.
+...5 GPIO were required for the interface. The SPI was already in the default dtb configuration. Since the resources needed the modifications, a patch is created for additional reference. 
+...For this implementation UART1 and UART2 is scavanged. While the CAN1 is introduced for need of application not dependent on E-Paper Display.
 
 ## Project management
 
@@ -36,7 +37,7 @@ The test program that is already part of Embedded Artists code and toggles the v
 
 The application program which is specific. The intention is to update the connected interface and it's ethernet IP on the display every minute using cron. Thus whenever the device is connected to network, the IP always is available to ssh in the device.
 
-The fonts required are used from [glcdlib][4]. 
+The fonts required are used from [openglcd][4]. 
 
 ### epd_netid(optional)
 
