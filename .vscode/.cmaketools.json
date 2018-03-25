@@ -26,8 +26,7 @@
                   {
                     "compileFlags": "-Wall -D_FILE_OFFSET_BITS=64  -O3 -DNDEBUG  ",
                     "defines": [
-                      "EPD_COG_VERSION=2",
-                      "TEST_EPD_NETID"
+                      "EPD_COG_VERSION=2"
                     ],
                     "includePath": [
                       {
@@ -59,15 +58,14 @@
               },
               {
                 "artifacts": [
-                  "/home/p/git/epd.git/build/epd_netID"
+                  "/home/p/git/epd.git/build/epd_app"
                 ],
                 "buildDirectory": "/home/p/git/epd.git/build",
                 "fileGroups": [
                   {
                     "compileFlags": "-Wall -D_FILE_OFFSET_BITS=64  -O3 -DNDEBUG  ",
                     "defines": [
-                      "EPD_COG_VERSION=2",
-                      "TEST_EPD_NETID"
+                      "EPD_COG_VERSION=2"
                     ],
                     "includePath": [
                       {
@@ -80,15 +78,17 @@
                     "isGenerated": false,
                     "language": "C",
                     "sources": [
+                      "src/epd_app.c",
+                      "src/epd_fonts.c",
                       "src/epd_netid.c"
                     ]
                   }
                 ],
-                "fullName": "epd_netID",
+                "fullName": "epd_app",
                 "linkFlags": "-rdynamic",
                 "linkLanguageFlags": "-Wall -D_FILE_OFFSET_BITS=64  -O3 -DNDEBUG",
                 "linkerLanguage": "C",
-                "name": "epd_netID",
+                "name": "epd_app",
                 "sourceDirectory": "/home/p/git/epd.git",
                 "type": "EXECUTABLE"
               },
@@ -101,8 +101,7 @@
                   {
                     "compileFlags": "-Wall -D_FILE_OFFSET_BITS=64  -O3 -DNDEBUG  ",
                     "defines": [
-                      "EPD_COG_VERSION=2",
-                      "TEST_EPD_NETID"
+                      "EPD_COG_VERSION=2"
                     ],
                     "includePath": [
                       {
@@ -137,7 +136,7 @@
         ]
       }
     ],
-    "cookie": "0.16015380468274887",
+    "cookie": "0.02614685732120714",
     "inReplyTo": "codemodel",
     "type": "reply"
   }
