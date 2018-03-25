@@ -1,3 +1,3 @@
 # epd-driver
 
-E-Paper Display EM027AS012 driver for embedded linux. I'm trying to work on the driver created by https://github.com/repk/epd
+The E-Paper display driver written in C from Embedded Artists is modified to be used with ARMv7 SOM from Toradex(R)
