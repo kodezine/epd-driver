@@ -26,7 +26,8 @@ There are 3 project targets:
 
 This generates the fuse library enabled part that will be later used as a /dev/epd device using FUSE as discussed in the original [Embedded Artists][1] repository.
 
-The board had to be updated with the necessary fuse library using "opkg install fuse".
+ - The board had to be updated with the necessary fuse library using "opkg install fuse". 
+ - The cross compilation needs definition of _FILE_OFFSET_BITS=64 during build.
 
 ### epd_test
 
