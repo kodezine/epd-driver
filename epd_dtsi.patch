@@ -1,0 +1,46 @@
+diff --git a/arch/arm/boot/dts/vf-colibri-eval-v3.dtsi b/arch/arm/boot/dts/vf-colibri-eval-v3.dtsi
+index dc70304..fd40d26 100644
+--- a/arch/arm/boot/dts/vf-colibri-eval-v3.dtsi
++++ b/arch/arm/boot/dts/vf-colibri-eval-v3.dtsi
+@@ -184,10 +184,14 @@
+ };
+ 
+ &uart1 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &uart2 {
++	status = "disabled";
++};
++
++&can1 {
+ 	status = "okay";
+ };
+ 
+diff --git a/arch/arm/boot/dts/vf-colibri.dtsi b/arch/arm/boot/dts/vf-colibri.dtsi
+index 7d11341..cfbbdd5 100644
+--- a/arch/arm/boot/dts/vf-colibri.dtsi
++++ b/arch/arm/boot/dts/vf-colibri.dtsi
+@@ -276,8 +276,6 @@
+ 				VF610_PAD_PTA31__GPIO_21	0x22ed
+ 				VF610_PAD_PTB6__GPIO_28		0x22ed
+ 				VF610_PAD_PTB7__GPIO_29		0x22ed
+-				VF610_PAD_PTB16__GPIO_38	0x22ed
+-				VF610_PAD_PTB17__GPIO_39	0x22ed
+ 				VF610_PAD_PTB18__GPIO_40	0x22ed
+ 				VF610_PAD_PTB21__GPIO_43	0x22ed
+ 				VF610_PAD_PTB22__GPIO_44	0x22ed
+@@ -304,6 +302,12 @@
+ 				VF610_PAD_PTB28__GPIO_98	0x22ed
+ 				VF610_PAD_PTC30__GPIO_103	0x22ed
+ 				VF610_PAD_PTA7__GPIO_134	0x22ed
++				VF610_PAD_PTD0__GPIO_79		0x22ed
++				VF610_PAD_PTD1__GPIO_80		0x22ed
++				VF610_PAD_PTD2__GPIO_81		0x22ed
++				VF610_PAD_PTD3__GPIO_82		0x22ed
++				VF610_PAD_PTB4__GPIO_26		0x22ed
++				VF610_PAD_PTB5__GPIO_27		0x22ed
+ 			>;
+ 		};
+ 
