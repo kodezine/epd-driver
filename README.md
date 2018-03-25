@@ -4,11 +4,18 @@ The E-Paper display driver written in C from [Embedded Artists][1] is modified t
 
 ## Requirement on the Embedded Linux board
 
-### Connection to EPD
+### Connection to EPD 14 Pin connector
+
 | Viola Pins   | Pins   | Description   | Description   | Pin   | Viola Pins   |
 | :----------: | -----: | :------------ | ------------: | :---- | :----------- |
-| 7 | 1 | GND | 3v3 | 2 | 4 |
+| 7  | 1 | GND  |  3v3 | 2 | 4  |
 | 22 | 3 | SLCK | MOSI | 4 | 20 |
+| 21 | 5 | MISO | SSEL | 6 | 23 |
+| 34 | 7 | BUSY | BORDER | 8 | 37 |
+|*NC*| 9 | SCL  | SDA  | 10 |*NC*|
+|*NC*| 11 | PWM  | RESET  | 12 | 39 |
+| 36 | 13 | PANEL ON  | DISCHARGE | 14 | 38 |
+
 
 ### Firmware Changes
 
