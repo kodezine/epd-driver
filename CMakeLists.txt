@@ -2,14 +2,14 @@
 cmake_minimum_required(VERSION 2.8)
 
 # Name of the project
-project(kdEPD C CXX)
+project(epd_test C CXX)
 
 # Compiler flags for build
 set(CMAKE_CXX_FLAGS "-Wall -std=c++11 -D_FILE_OFFSET_BITS=64 ${CMAKE_CXX_FLAGS}")
 set(CMAKE_C_FLAGS "-Wall -D_FILE_OFFSET_BITS=64 ${CMAKE_C_FLAGS}")
 # Options for enabling / disabling features of the driver
 option(COGVERSIONV2 "Set to enabled if COG version driver should be used." ON)
-# option(ENABLE_DEBUG_MSG "Set to enable debug prints for low level debugging." OFF)
+option(NETID_TEST "Set to build for testing network identificatin program." OFF)
 
 # External libraries 
 set(LIBS4COMPILE 
@@ -72,6 +72,16 @@ target_link_libraries(
 	${LIBS4COMPILE}
 	fuse
 )
+if (NETID_TEST)
+
+add_definitions( -DTEST_EPD_NETID )
+
+add_executable(
+	epd_netID 
+
+	${CMAKE_SOURCE_DIR}/src/epd_netid.c
+)
+else()
 add_executable(
 	epd_app 
 
@@ -79,8 +89,4 @@ add_executable(
 	${CMAKE_SOURCE_DIR}/src/epd_fonts.c
 	${CMAKE_SOURCE_DIR}/src/epd_netid.c
 )
-#add_executable(
-#	epd_netID 
-
-#	${CMAKE_SOURCE_DIR}/src/epd_netid.c
-#)
+endif()

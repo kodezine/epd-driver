@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "epd_netid.h"
-#if 0
+#ifdef TEST_EPD_NETID
 int main(int argc, char *argv[])
 {
     uint8_t* pBuffer = malloc(1024);

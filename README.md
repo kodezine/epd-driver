@@ -22,7 +22,7 @@ The compiler tools are
 
 There are 3 project targets:
 
-### epd-fuse
+### epd_fuse
 
 This generates the fuse library enabled part that will be later used as a /dev/epd device using FUSE as discussed in the original Embedded Artists repository.
 
@@ -35,3 +35,7 @@ The test program that is already part of Embedded Artists code and toggles the v
 ### epd_app
 
 The application program which is specific. The intention is to update the connected interface and it's ethernet IP on the display every minute using cron. Thus whenever the device is connected to network, the IP always is available to ssh in the device.
+
+### epd_netid(optional)
+
+This is a target application that only tests if the IP search is working and buffer handling is OK.
