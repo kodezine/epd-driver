@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
     x = sprintf((char*)pBuffer+x,"%s", "Sohal\n");
     x = epd_getID(x,pBuffer);
     printf("%s\n:%d\n", pBuffer,x);
+    free(pBuffer);
     exit(EXIT_SUCCESS);
 }
 #endif
