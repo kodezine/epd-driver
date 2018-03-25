@@ -19,21 +19,25 @@
 #include <time.h>
 
 #include "epd_fonts.h"
-#define EPD_PIXELS_PER_ROWS         264
-#define EPD_TOTAL_ROWS              176
+#include "epd_netid.h"
 
-#define EPD_BYTES_PER_ROW           (EPD_PIXELS_PER_ROWS / 8)
-#define EPD_CHARS_PER_LINE          (EPD_TOTAL_ROWS / 8)
-#define BYTEBUFFER                  (EPD_BYTES_PER_ROW * EPD_TOTAL_ROWS)
-#define MAX_EPD_CHARS               (EPD_CHARS_PER_LINE * EPD_BYTES_PER_ROW)
-int app_network(int *poffset, char* pString);
-static void epd_putchar(uint32_t x, uint32_t y, uint8_t* pBuffer, uint8_t c);
-static void epd_putstring(uint32_t x, uint32_t y, uint8_t* pBuffer, char* pString);
-static void epd_transpose(uint8_t *pDest, uint8_t *pSrc);
-
-int main(void)
+int main(int argc, char* argv[])
 {
-    const char* pName = "\nKODEZINE UG";
+    char* pUser = NULL;
+    if(argc > 2)
+    {
+        printf("\nProvide one arguement only\n");
+        return 1;
+    }else{
+        if(argc < 2)
+        {;
+        }else
+        {
+            pUser = argv[1];
+        }
+    }
+    
+    const char* pName = "KODEZINE UG";
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
     FILE *pEPD = NULL;
@@ -46,8 +50,19 @@ int main(void)
     if(pBuffer != NULL)
     {
         static int x = 0;
-        x += sprintf(pScreen+x, "%s", pName);
-        x += sprintf(pScreen+x, "    %d-%d-%d %d:%d:%d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+        x += sprintf(pScreen+x, "%s\n", pName);
+        x += sprintf(pScreen+x, "%4d.%02d.%02d %02d:%02d:%02d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+        if(pUser != NULL)
+        {
+            x += sprintf(pScreen+x, "%s\n", pUser);
+        }
+        x += sprintf(pScreen+x, "%s\n", "_________________________________");
+
+        x += sprintf(pScreen+x, "%s","\n");
+        
+        x = epd_getID(x, (uint8_t*)pScreen);
+
+        epd_fontinit();
         
         epd_putstring(0, 0, pBuffer, pScreen);
         printf("%s: %d\n",pScreen, x);
@@ -82,60 +97,3 @@ int main(void)
     return 0;
 }
 
-static void epd_transpose(uint8_t *pDest, uint8_t *pSrc)
-{
-    uint8_t i, j;
-    for(i = 0; i < 8; i++)
-    {
-        for(j = 0; j < 8; j++)
-        {
-            if(pSrc[i] & (0x01U << j))
-            {
-                pDest[j] |= (0x01U << i);
-            }else
-            {
-                pDest[j] &= (~(0x01U << i));
-            }
-        }
-    }
-}
-
-void epd_putchar(uint32_t x, uint32_t y, uint8_t* pBuffer, uint8_t c)
-{
-    /** Find the character array from the table */
-    int index = ((c*8)), bufferIndex;
-    uint8_t src[8], dest[8], i = 0;
-    memset(src,0,8);
-    memset(dest,0,8);
-    bufferIndex = (EPD_BYTES_PER_ROW * y) + x;
-    for(; index < ((c*8)+8) ;index++)
-    {
-        src[i] = CP437FONT8x8[index];
-        i++;
-    }
-    epd_transpose(dest, src);
-    for(index = 0; index < 8 ;index++)
-    {
-        pBuffer[bufferIndex] = dest[index];
-        bufferIndex += (EPD_BYTES_PER_ROW);
-    }
-}
-
-void epd_putstring(uint32_t x, uint32_t y, uint8_t *pBuffer, char* pString)
-{
-    do{
-        if('\0' == *pString)
-        {
-            break;
-        }else{
-            if(*pString == '\n')
-            {
-                y += 8U;
-                x = 0;
-            }else{
-                epd_putchar(x++, y, pBuffer, *pString);
-            }                
-        }
-        pString++;
-    }while(1);
-}

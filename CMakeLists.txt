@@ -38,6 +38,7 @@ list(REMOVE_ITEM SOURCES
 	"${CMAKE_SOURCE_DIR}/src/epd_test.c"
 	"${CMAKE_SOURCE_DIR}/src/epd_fuse.c"
 	"${CMAKE_SOURCE_DIR}/src/epd_app.c"
+	"${CMAKE_SOURCE_DIR}/src/epd_netid.c"
 )
 
 # Additional defines to be introduced
@@ -75,4 +76,11 @@ add_executable(
 	epd_app 
 
 	${CMAKE_SOURCE_DIR}/src/epd_app.c
+	${CMAKE_SOURCE_DIR}/src/epd_fonts.c
+	${CMAKE_SOURCE_DIR}/src/epd_netid.c
 )
+#add_executable(
+#	epd_netID 
+
+#	${CMAKE_SOURCE_DIR}/src/epd_netid.c
+#)
