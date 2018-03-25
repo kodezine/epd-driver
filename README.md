@@ -1,8 +1,17 @@
 # epd-driver
 
-The E-Paper display driver written in C from [Embedded Artists][1] is modified to be used with [Colibri VF50][2].
+The E-Paper display driver written in C from [Embedded Artists][1] is modified to be used with [Colibri VF50][2] module on [Viola V1.1][5].
 
 ## Requirement on the Embedded Linux board
+
+### Connection to EPD
+
+    | Viola Pins   | Pins   | Description   | Description   | Pin   | Viola Pins   |
+    |:------------:| ------:|:------------- | -------------:|:----- |:------------ |
+    | 7 | 1 | GND | 3v3 | 2 | 4 |
+    | 22 | 3 | SLCK | MOSI | 4 | 20 |
+
+### Firmware Changes
 
 The following changes were required to be made for the E-Paper display interface.
 
@@ -47,3 +56,4 @@ This is a target application that only tests if the IP search is working and buf
 [2]: https://www.toradex.com/computer-on-modules/colibri-arm-family/nxp-freescale-vybrid-vf5xx
 [3]: https://developer.toradex.com/knowledge-base/build-u-boot-and-linux-kernel-from-source-code
 [4]: https://bitbucket.org/bperrybap/openglcd
+[5]: https://www.toradex.com/products/carrier-board/viola-carrier-board
