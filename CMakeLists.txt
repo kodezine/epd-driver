@@ -29,17 +29,12 @@ link_directories(
 )
 
 # Files for compilation
-file(GLOB SOURCES
-	"src/*.c"
-	"src/*.cpp"
+set(SOURCES
+	"${CMAKE_SOURCE_DIR}/src/epd_v2.c"
+	"${CMAKE_SOURCE_DIR}/src/gpio.c"
+	"${CMAKE_SOURCE_DIR}/src/spi.c"
 )
 
-list(REMOVE_ITEM SOURCES
-	"${CMAKE_SOURCE_DIR}/src/epd_test.c"
-	"${CMAKE_SOURCE_DIR}/src/epd_fuse.c"
-	"${CMAKE_SOURCE_DIR}/src/epd_app.c"
-	"${CMAKE_SOURCE_DIR}/src/epd_netid.c"
-)
 
 # Additional defines to be introduced
 if (COGVERSIONV2)

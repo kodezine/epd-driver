@@ -19,51 +19,12 @@
             "targets": [
               {
                 "artifacts": [
-                  "/home/p/git/epd.git/build/epd_test"
-                ],
-                "buildDirectory": "/home/p/git/epd.git/build",
-                "fileGroups": [
-                  {
-                    "compileFlags": "-Wall -D_FILE_OFFSET_BITS=64  -O3 -DNDEBUG  ",
-                    "defines": [
-                      "EPD_COG_VERSION=2"
-                    ],
-                    "includePath": [
-                      {
-                        "path": "/home/p/git/epd.git/inc"
-                      },
-                      {
-                        "path": "/home/p/git/epd.git/images"
-                      }
-                    ],
-                    "isGenerated": false,
-                    "language": "C",
-                    "sources": [
-                      "src/epd_fonts.c",
-                      "src/epd_v2.c",
-                      "src/gpio.c",
-                      "src/spi.c",
-                      "src/epd_test.c"
-                    ]
-                  }
-                ],
-                "fullName": "epd_test",
-                "linkFlags": "-rdynamic",
-                "linkLanguageFlags": "-Wall -D_FILE_OFFSET_BITS=64  -O3 -DNDEBUG",
-                "linkLibraries": "-lpthread -lrt",
-                "linkerLanguage": "C",
-                "name": "epd_test",
-                "sourceDirectory": "/home/p/git/epd.git",
-                "type": "EXECUTABLE"
-              },
-              {
-                "artifacts": [
                   "/home/p/git/epd.git/build/epd_app"
                 ],
                 "buildDirectory": "/home/p/git/epd.git/build",
                 "fileGroups": [
                   {
-                    "compileFlags": "-Wall -D_FILE_OFFSET_BITS=64  -O3 -DNDEBUG  ",
+                    "compileFlags": "-Wall -D_FILE_OFFSET_BITS=64 -O2 -pipe -g -feliminate-unused-debug-types -O3 -DNDEBUG  ",
                     "defines": [
                       "EPD_COG_VERSION=2"
                     ],
@@ -85,8 +46,8 @@
                   }
                 ],
                 "fullName": "epd_app",
-                "linkFlags": "-rdynamic",
-                "linkLanguageFlags": "-Wall -D_FILE_OFFSET_BITS=64  -O3 -DNDEBUG",
+                "linkFlags": "-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed   -rdynamic",
+                "linkLanguageFlags": "-Wall -D_FILE_OFFSET_BITS=64 -O2 -pipe -g -feliminate-unused-debug-types -O3 -DNDEBUG",
                 "linkerLanguage": "C",
                 "name": "epd_app",
                 "sourceDirectory": "/home/p/git/epd.git",
@@ -94,12 +55,12 @@
               },
               {
                 "artifacts": [
-                  "/home/p/git/epd.git/build/epd_fuse"
+                  "/home/p/git/epd.git/build/epd_test"
                 ],
                 "buildDirectory": "/home/p/git/epd.git/build",
                 "fileGroups": [
                   {
-                    "compileFlags": "-Wall -D_FILE_OFFSET_BITS=64  -O3 -DNDEBUG  ",
+                    "compileFlags": "-Wall -D_FILE_OFFSET_BITS=64 -O2 -pipe -g -feliminate-unused-debug-types -O3 -DNDEBUG  ",
                     "defines": [
                       "EPD_COG_VERSION=2"
                     ],
@@ -114,7 +75,44 @@
                     "isGenerated": false,
                     "language": "C",
                     "sources": [
-                      "src/epd_fonts.c",
+                      "src/epd_v2.c",
+                      "src/gpio.c",
+                      "src/spi.c",
+                      "src/epd_test.c"
+                    ]
+                  }
+                ],
+                "fullName": "epd_test",
+                "linkFlags": "-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed   -rdynamic",
+                "linkLanguageFlags": "-Wall -D_FILE_OFFSET_BITS=64 -O2 -pipe -g -feliminate-unused-debug-types -O3 -DNDEBUG",
+                "linkLibraries": "-lpthread -lrt",
+                "linkerLanguage": "C",
+                "name": "epd_test",
+                "sourceDirectory": "/home/p/git/epd.git",
+                "type": "EXECUTABLE"
+              },
+              {
+                "artifacts": [
+                  "/home/p/git/epd.git/build/epd_fuse"
+                ],
+                "buildDirectory": "/home/p/git/epd.git/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "-Wall -D_FILE_OFFSET_BITS=64 -O2 -pipe -g -feliminate-unused-debug-types -O3 -DNDEBUG  ",
+                    "defines": [
+                      "EPD_COG_VERSION=2"
+                    ],
+                    "includePath": [
+                      {
+                        "path": "/home/p/git/epd.git/inc"
+                      },
+                      {
+                        "path": "/home/p/git/epd.git/images"
+                      }
+                    ],
+                    "isGenerated": false,
+                    "language": "C",
+                    "sources": [
                       "src/epd_v2.c",
                       "src/gpio.c",
                       "src/spi.c",
@@ -123,8 +121,8 @@
                   }
                 ],
                 "fullName": "epd_fuse",
-                "linkFlags": "-rdynamic",
-                "linkLanguageFlags": "-Wall -D_FILE_OFFSET_BITS=64  -O3 -DNDEBUG",
+                "linkFlags": "-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed   -rdynamic",
+                "linkLanguageFlags": "-Wall -D_FILE_OFFSET_BITS=64 -O2 -pipe -g -feliminate-unused-debug-types -O3 -DNDEBUG",
                 "linkLibraries": "-lpthread -lrt -lfuse",
                 "linkerLanguage": "C",
                 "name": "epd_fuse",
@@ -136,7 +134,7 @@
         ]
       }
     ],
-    "cookie": "0.02614685732120714",
+    "cookie": "0.3598070310404937",
     "inReplyTo": "codemodel",
     "type": "reply"
   }
