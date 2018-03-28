@@ -1,8 +1,24 @@
-# epd-driver
+# epd-driver for [2.7"] display
 
-The E-Paper display driver written in C from [Embedded Artists][1] is modified to be used with [Colibri VF50][2].
+The E-Paper display driver written in C from [Embedded Artists][1] is modified to be used with [Colibri VF50][2] module on [Viola V1.1][5] from Toradex&reg;.
 
 ## Requirement on the Embedded Linux board
+
+### Connection to EPD 14 Pin connector
+
+| Viola Pins   | Pins   | Description   | Description   | Pin   | Viola Pins   |
+| :----------: | -----: | :------------ | ------------: | :---- | :----------: |
+| 7  | 1  | GND         |  3v3      | 2  | 4  |
+| 22 | 3  | SLCK        | MOSI      | 4  | 20 |
+| 21 | 5  | MISO        | SSEL      | 6  | 23 |
+| 34 | 7  | BUSY        | BORDER    | 8  | 37 |
+|*NC*| 9  | SCL         | SDA       | 10 |*NC*|
+|*NC*| 11 | PWM         | RESET     | 12 | 39 |
+| 36 | 13 | PANEL ON    | DISCHARGE | 14 | 38 |
+
+   *NC Not connected to Viola Board*
+
+### Firmware Changes
 
 The following changes were required to be made for the E-Paper display interface.
 
@@ -11,9 +27,9 @@ The following changes were required to be made for the E-Paper display interface
 ## Project management
 
 The project is editied using visual studio code with following plugins:
- - C/C++ extension from Microsoft.
- - CMake language support plugin from twxs
- - CMake language support plugin from vector-of-bool
+ - C/C++ extension from Microsoft&trade;.
+ - CMake language support plugin from [twxs][6].
+ - CMake language support plugin from [vector-of-bool][7].
 
 The compiler tools are
  - ARM compiler toolchain for Toradex boards as described in [this][3] page.
@@ -24,9 +40,10 @@ There are 3 project targets:
 
 ### epd_fuse
 
-This generates the fuse library enabled part that will be later used as a /dev/epd device using FUSE as discussed in the original [Embedded Artists][1] repository.
+This generates the fuse library enabled part that will be later used as a /dev/epd device using [FUSE] as discussed in the original [Embedded Artists][1] repository.
 
-The board had to be updated with the necessary fuse library using "opkg install fuse".
+ - The board had to be updated with the necessary [FUSE] library using "opkg install fuse". 
+ - The cross compilation needs definition of *_FILE_OFFSET_BITS=64* during linking [FUSE] library.
 
 ### epd_test
 
@@ -46,3 +63,8 @@ This is a target application that only tests if the IP search is working and buf
 [2]: https://www.toradex.com/computer-on-modules/colibri-arm-family/nxp-freescale-vybrid-vf5xx
 [3]: https://developer.toradex.com/knowledge-base/build-u-boot-and-linux-kernel-from-source-code
 [4]: https://bitbucket.org/bperrybap/openglcd
+[5]: https://www.toradex.com/products/carrier-board/viola-carrier-board
+[6]: https://github.com/twxs/gitflow
+[7]: https://github.com/vector-of-bool/vscode-cmake-tools
+[FUSE]: https://en.wikipedia.org/wiki/Filesystem_in_Userspace
+[2.7"]: https://www.embeddedartists.com/products/displays/lcd_27_epaper.php
