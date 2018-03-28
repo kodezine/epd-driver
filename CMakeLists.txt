@@ -42,46 +42,34 @@ if (COGVERSIONV2)
 endif(COGVERSIONV2)
 
 # Executables generated here
-add_executable(
-	${PROJECT_NAME} 
-
+add_executable(${PROJECT_NAME} 
 	${SOURCES}
 	${CMAKE_SOURCE_DIR}/src/epd_test.c
 )
 
 # Linking libraries
-target_link_libraries(
-	${PROJECT_NAME} 
-
+target_link_libraries(${PROJECT_NAME} 
 	${LIBS4COMPILE}
 )
-add_executable(
-	epd_fuse 
-
+add_executable(epd_fuse 
 	${SOURCES}
 	${CMAKE_SOURCE_DIR}/src/epd_fuse.c
 )
-target_link_libraries(
-	epd_fuse 
-
+target_link_libraries(epd_fuse 
 	${LIBS4COMPILE}
 	fuse
 )
 if (NETID_TEST)
 
-add_definitions( -DTEST_EPD_NETID )
+	add_definitions( -DTEST_EPD_NETID )
 
-add_executable(
-	epd_netID 
-
-	${CMAKE_SOURCE_DIR}/src/epd_netid.c
-)
+	add_executable(epd_netID 
+		${CMAKE_SOURCE_DIR}/src/epd_netid.c
+	)
 else()
-add_executable(
-	epd_app 
-
-	${CMAKE_SOURCE_DIR}/src/epd_app.c
-	${CMAKE_SOURCE_DIR}/src/epd_fonts.c
-	${CMAKE_SOURCE_DIR}/src/epd_netid.c
-)
+	add_executable(epd_app 
+		${CMAKE_SOURCE_DIR}/src/epd_app.c
+		${CMAKE_SOURCE_DIR}/src/epd_fonts.c
+		${CMAKE_SOURCE_DIR}/src/epd_netid.c
+	)
 endif()
