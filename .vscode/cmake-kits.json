@@ -1,0 +1,6 @@
+[
+    {
+        "name": "Buildroot ARMEB",
+        "toolchainFile": "buildroot.cmake"
+    }
+]
