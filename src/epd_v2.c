@@ -326,7 +326,9 @@ void EPD_begin(EPD_type *epd) {
 
 	bool dc_ok = false;
 
-	for (int i = 0; i < 4; ++i) {
+	int i = 0;
+
+	for (i = 0; i < 4; ++i) {
 		// charge pump positive voltage on - VGH/VDL on
 		SPI_send(epd->spi, CU8(0x70, 0x05), 2);
 		SPI_send(epd->spi, CU8(0x72, 0x01), 2);
@@ -535,7 +537,8 @@ static void frame_fixed_timed(EPD_type *epd, uint8_t fixed_value, long stage_tim
 	}
 
 	do {
-		for (uint8_t line = 0; line < epd->lines_per_display ; ++line) {
+		uint8_t line = 0;
+		for (line = 0; line < epd->lines_per_display ; ++line) {
 			one_line(epd, epd->lines_per_display - line - 1, 0, fixed_value, EPD_normal, BORDER_BYTE_NULL);
 		}
 
@@ -562,8 +565,8 @@ static void frame_fixed_13(EPD_type *epd, uint8_t value, EPD_stage stage) {
 	}
 
 	int total_lines = epd->lines_per_display;
-
-	for (int n = 0; n < repeat; ++n) {
+	int n = 0;
+	for (n = 0; n < repeat; ++n) {
 
 		int block_begin = 0;
 		int block_end = 0;
@@ -579,8 +582,8 @@ static void frame_fixed_13(EPD_type *epd, uint8_t value, EPD_stage stage) {
 			}
 
 			bool full_block = (block_end - block_begin == block);
-
-			for (int line = block_begin; line < block_end; ++line) {
+			int line = block_begin;
+			for (line = block_begin; line < block_end; ++line) {
 				if (line >= total_lines) {
 					break;
 				}
@@ -611,8 +614,8 @@ static void frame_data_13(EPD_type *epd, const uint8_t *image, EPD_stage stage) 
 	}
 
 	int total_lines = epd->lines_per_display;
-
-	for (int n = 0; n < repeat; ++n) {
+	int n = 0;
+	for (n = 0; n < repeat; ++n) {
 
 		int block_begin = 0;
 		int block_end = 0;
@@ -628,8 +631,8 @@ static void frame_data_13(EPD_type *epd, const uint8_t *image, EPD_stage stage) 
 			}
 
 			bool full_block = (block_end - block_begin == block);
-
-			for (int line = block_begin; line < block_end; ++line) {
+			int line = block_begin;
+			for (line = block_begin; line < block_end; ++line) {
 				if (line >= total_lines) {
 					break;
 				}
@@ -645,7 +648,8 @@ static void frame_data_13(EPD_type *epd, const uint8_t *image, EPD_stage stage) 
 
 
 static void frame_stage2(EPD_type *epd) {
-	for (int i = 0; i < epd->compensation->stage2_repeat; ++i) {
+	int i = 0;
+	for (i = 0; i < epd->compensation->stage2_repeat; ++i) {
 		frame_fixed_timed(epd, 0xff, epd->compensation->stage2_t1);
 		frame_fixed_timed(epd, 0xaa, epd->compensation->stage2_t2);
 	}
@@ -653,7 +657,8 @@ static void frame_stage2(EPD_type *epd) {
 
 
 static void nothing_frame(EPD_type *epd) {
-	for (int line = 0; line < epd->lines_per_display; ++line) {
+	int line = 0;
+	for (line = 0; line < epd->lines_per_display; ++line) {
 
 		// charge pump voltage level reduce voltage shift
 		SPI_send(epd->spi, CU8(0x70, 0x04), 2);
@@ -697,7 +702,8 @@ static void one_line(EPD_type *epd, uint16_t line, const uint8_t *data, uint8_t 
 
 	// pixels
 	if (0 != data) {
-		for (uint16_t b = 0; b < epd->bytes_per_line; ++b) {
+		uint16_t b = 0;
+		for (b = 0; b < epd->bytes_per_line; ++b) {
 			uint8_t pixels = data[b];
 			switch(stage) {
 			case EPD_inverse:      // B -> W, W -> B
