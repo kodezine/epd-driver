@@ -7,7 +7,7 @@ SET(CMAKE_SYSTEM_VERSION 1)
 # Specify location of toolchain root folder
 SET(TC_ROOT_FOLDER "/home/p/work/buildroot.git/output/host")
 # Specify toolchain prefix
-SET(TC_PREFIX "armeb-buildroot-linux-gnueabihf")
+SET(TC_PREFIX "arm-buildroot-linux-gnueabihf")
 # Specify cross compiler 
 SET(CMAKE_C_COMPILER    ${TC_ROOT_FOLDER}/bin/${TC_PREFIX}-gcc)
 SET(CMAKE_CXX_COMPILER  ${TC_ROOT_FOLDER}/bin/${TC_PREFIX}-g++)

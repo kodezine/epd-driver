@@ -1,6 +1,6 @@
 [
     {
-        "name": "Buildroot ARMEB",
+        "name": "Buildroot ARM",
         "toolchainFile": "buildroot.cmake"
     }
 ]
