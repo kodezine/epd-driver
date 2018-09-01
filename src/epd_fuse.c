@@ -517,18 +517,20 @@ static const char reverse[256] = {
 
 // copy buffer
 static void special_memcpy(char *d, const char *s, size_t size, bool bit_reversed, bool inverted) {
+	size_t n;	
 	if (bit_reversed) {
+				
 		if (inverted) {
-			for (size_t n = 0; n < size; ++n) {
+			for (n = 0; n < size; ++n) {
 				*d++ = reverse[(unsigned)(*s++)] ^ 0xff;
 			}
 		} else {
-			for (size_t n = 0; n < size; ++n) {
+			for (n = 0; n < size; ++n) {
 				*d++ = reverse[(unsigned)(*s++)];
 			}
 		}
 	} else if (inverted) {
-		for (size_t n = 0; n < size; ++n) {
+		for (n = 0; n < size; ++n) {
 			*d++ = *s++ ^ 0xff;
 		}
 	} else {
