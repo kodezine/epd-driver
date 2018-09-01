@@ -6,7 +6,7 @@ os:
 - linux
 
 before_install:
-- sudo apt-get install -y libfuse
+- sudo apt-get install -y libfuse-dev
 
 addons:
   apt:
