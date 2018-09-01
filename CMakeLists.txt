@@ -6,7 +6,7 @@ project(epd_test C CXX)
 
 # Compiler flags for build
 set(CMAKE_CXX_FLAGS "-Wall -std=c++11 -D_FILE_OFFSET_BITS=64 ${CMAKE_CXX_FLAGS}")
-set(CMAKE_C_FLAGS "-Wall -D_FILE_OFFSET_BITS=64 ${CMAKE_C_FLAGS}")
+set(CMAKE_C_FLAGS "-Wall -std=C99 -D_FILE_OFFSET_BITS=64 ${CMAKE_C_FLAGS}")
 # Options for enabling / disabling features of the driver
 option(COGVERSIONV2 "Set to enabled if COG version driver should be used." ON)
 option(NETID_TEST "Set to build for testing network identificatin program." OFF)
