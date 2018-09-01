@@ -177,7 +177,8 @@ int main(int argc, char *argv[]) {
 #endif
 
 	printf("images start\n");
-	for (int i = 0; i < image_count; ++i) {
+	int i = 0;
+	for (i = 0; i < image_count; ++i) {
 		printf("image = %d\n", i);
 		EPD_begin(epd);
 #if EPD_COG_VERSION == 1
