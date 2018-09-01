@@ -1,0 +1,18 @@
+language: c
+compiler: 
+- gcc
+sudo: false
+os:
+- linux
+
+before_install:
+- sudo apt-get install -y libfuse
+
+addons:
+  apt:
+    update: true
+
+script:
+- cmake -H. -Bbuild
+- cmake --build build --
+
