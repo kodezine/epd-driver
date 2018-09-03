@@ -64,7 +64,7 @@ This is a target application that only tests if the IP search is working and buf
 [1]: https://github.com/embeddedartists/gratis
 [2]: https://www.toradex.com/computer-on-modules/colibri-arm-family/nxp-freescale-vybrid-vf5xx
 [3]: https://developer.toradex.com/knowledge-base/build-u-boot-and-linux-kernel-from-source-code
-[4]: https://bitbucket.org/bperrybap/openglcd
+[4]: https://bitbucket.org/bperrybap/openglcd/wiki/Home
 [5]: https://www.toradex.com/products/carrier-board/viola-carrier-board
 [6]: https://github.com/twxs/gitflow
 [7]: https://github.com/vector-of-bool/vscode-cmake-tools
