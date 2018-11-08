@@ -71,4 +71,4 @@ This is a target application that only tests if the IP search is working and buf
 [FUSE]: https://en.wikipedia.org/wiki/Filesystem_in_Userspace
 [2.7"]: https://www.embeddedartists.com/products/displays/lcd_27_epaper.php
 
-"The product names mentioned here may be trade marks of the respective brands."
+*The product names mentioned here may be trade marks of the respective brands.*
