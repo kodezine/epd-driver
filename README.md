@@ -18,6 +18,7 @@ The E-Paper display driver written in C from [Embedded Artists][1] is modified t
 |*NC*| 9  | SCL         | SDA       | 10 |*NC*|
 |*NC*| 11 | PWM         | RESET     | 12 | 39 |
 | 36 | 13 | PANEL ON    | DISCHARGE | 14 | 38 |
+
 *NC Not connected to Viola Board*
 
 ### Firmware Changes
