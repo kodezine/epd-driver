@@ -1,6 +1,8 @@
-[![Build_Status](https://travis-ci.com/sohal/epd-driver.svg?branch=master)](https://travis-ci.com/sohal/epd-driver)
 
 # epd-driver for [2.7"] display
+
+[![Build_Status](https://travis-ci.com/sohal/epd-driver.svg?branch=master)](https://travis-ci.com/sohal/epd-driver)
+
 
 The E-Paper display driver written in C from [Embedded Artists][1] is modified to be used with [Colibri VF50][2] module on [Viola V1.1][5] from Toradex&reg;.
 
@@ -18,7 +20,7 @@ The E-Paper display driver written in C from [Embedded Artists][1] is modified t
 |*NC*| 11 | PWM         | RESET     | 12 | 39 |
 | 36 | 13 | PANEL ON    | DISCHARGE | 14 | 38 |
 
-   *NC Not connected to Viola Board*
+*NC Not connected to Viola Board*
 
 ### Firmware Changes
 
@@ -29,12 +31,14 @@ The following changes were required to be made for the E-Paper display interface
 ## Project management
 
 The project is editied using visual studio code with following plugins:
- - C/C++ extension from Microsoft&trade;.
- - CMake language support plugin from [twxs][6].
- - CMake language support plugin from [vector-of-bool][7].
+
+ 0 C/C++ extension from Microsoft&trade;.
+ 0 CMake language support plugin from [twxs][6].
+ 0 CMake language support plugin from [vector-of-bool][7].
 
 The compiler tools are
- - ARM compiler toolchain for Toradex boards as described in [this][3] page.
+ 
+ 0 ARM compiler toolchain for Toradex boards as described in [this][3] page.
 
 ## Targets
 
@@ -44,8 +48,8 @@ There are 3 project targets:
 
 This generates the fuse library enabled part that will be later used as a /dev/epd device using [FUSE] as discussed in the original [Embedded Artists][1] repository.
 
- - The board had to be updated with the necessary [FUSE] library using "opkg install fuse". 
- - The cross compilation needs definition of *_FILE_OFFSET_BITS=64* during linking [FUSE] library.
+ 0 The board had to be updated with the necessary [FUSE] library using "opkg install fuse". 
+ 0 The cross compilation needs definition of *_FILE_OFFSET_BITS=64* during linking [FUSE] library.
 
 ### epd_test
 
@@ -55,7 +59,7 @@ The test program that is already part of Embedded Artists code and toggles the v
 
 The application program which is specific. The intention is to update the connected interface and it's ethernet IP on the display every minute using cron. Thus whenever the device is connected to network, the IP always is available to ssh in the device.
 
-The fonts required are used from [openglcd][4]. 
+The fonts required are used from [openglcd][4].
 
 ### epd_netid(optional)
 
