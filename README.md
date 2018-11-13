@@ -32,13 +32,13 @@ The following changes were required to be made for the E-Paper display interface
 
 The project is editied using visual studio code with following plugins:
 
- 0 C/C++ extension from Microsoft&trade;.
- 0 CMake language support plugin from [twxs][6].
- 0 CMake language support plugin from [vector-of-bool][7].
+- C/C++ extension from Microsoft&trade;.
+- CMake language support plugin from [twxs][6].
+- CMake language support plugin from [vector-of-bool][7].
 
 The compiler tools are
  
- 0 ARM compiler toolchain for Toradex boards as described in [this][3] page.
+- ARM compiler toolchain for Toradex boards as described in [this][3] page.
 
 ## Targets
 
@@ -48,8 +48,8 @@ There are 3 project targets:
 
 This generates the fuse library enabled part that will be later used as a /dev/epd device using [FUSE] as discussed in the original [Embedded Artists][1] repository.
 
- 0 The board had to be updated with the necessary [FUSE] library using "opkg install fuse". 
- 0 The cross compilation needs definition of *_FILE_OFFSET_BITS=64* during linking [FUSE] library.
+- The board had to be updated with the necessary [FUSE] library using "opkg install fuse". 
+- The cross compilation needs definition of *_FILE_OFFSET_BITS=64* during linking [FUSE] library.
 
 ### epd_test
 
