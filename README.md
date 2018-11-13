@@ -3,7 +3,6 @@
 
 [![Build_Status](https://travis-ci.com/sohal/epd-driver.svg?branch=master)](https://travis-ci.com/sohal/epd-driver)
 
-
 The E-Paper display driver written in C from [Embedded Artists][1] is modified to be used with [Colibri VF50][2] module on [Viola V1.1][5] from Toradex&reg;.
 
 ## Requirement on the Embedded Linux board
@@ -19,7 +18,6 @@ The E-Paper display driver written in C from [Embedded Artists][1] is modified t
 |*NC*| 9  | SCL         | SDA       | 10 |*NC*|
 |*NC*| 11 | PWM         | RESET     | 12 | 39 |
 | 36 | 13 | PANEL ON    | DISCHARGE | 14 | 38 |
-
 *NC Not connected to Viola Board*
 
 ### Firmware Changes
