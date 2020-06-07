@@ -5,6 +5,8 @@
 
 The E-Paper display driver written in C from [Embedded Artists][1] is modified to be used with [Colibri VF50][2] module on [Viola V1.1][5] from Toradex&reg;.
 
+_Works on Linux_
+
 ## Requirement on the Embedded Linux board
 
 ### Connection to EPD 14 Pin connector
